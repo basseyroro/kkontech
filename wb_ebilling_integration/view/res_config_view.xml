@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_ebilling_form_view" model="ir.ui.view">
+                <field name="name">res.config.settings.ebilling.form.view</field>
+                <field name="model">res.config.settings</field>
+                <field name="priority" eval="10"/>
+                <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+                <field name="arch" type="xml">
+                    <xpath expr="//div[@data-key='sale_management']" position="inside">
+                        <h2>E-Billing Configuration</h2>
+                        <div class="row mt16 o_settings_container" name="eBilling_setting_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="eBilling_id"
+                                title="Active your eBilling integration.">
+                                <div class="o_setting_left_pane">
+                                    <field name="wb_ebilling_token"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wb_ebilling_token"/>
+                                    <div class="text-muted">
+                                        Add a token for eBilling
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box" id="isupply_psw"
+                                title="Active your iSupply integration.">
+                                <div class="o_setting_left_pane">
+                                    <field name="wb_ebilling_url"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wb_ebilling_url"/>
+                                    <div class="text-muted">
+                                        Add a uri for the eBilling
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box" id="isupply_paidurl"
+                                title="Active your iSupply integration.">
+                                <div class="o_setting_left_pane">
+                                    <field name="wb_ebilling_paid_url"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wb_ebilling_paid_url"/>
+                                    <div class="text-muted">
+                                        Add a uri for the paid eBilling
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </xpath>
+                </field>
+            </record>
+
+    </data>
+</odoo>

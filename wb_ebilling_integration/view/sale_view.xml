@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="wb_view_sale_order_extend_form" model="ir.ui.view">
+            <field name="name">wb.view.sale.order.extend.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <field name="partner_shipping_id" position="after">
+                    <field name="is_new_customer"/>
+                    <field name="paydate"/>
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page string="E-Billing" groups="base.group_no_one" attrs="{'invisible':[('is_new_customer','=',False)]}">
+                        <group>
+                            <button name="postEBillingInvoice" string="Post" type="object" attrs="{'invisible':[('is_integration_done','=',True)]}"/>
+                            <field name="is_integration_done" invisible="1"/>
+                            <label for="request_data" string="Request"/>
+                            <field name="request_data" readonly="1" nolabel="1"/>
+                            <label for="response_data" string="Response"/>
+                            <field name="response_data" readonly="1" nolabel="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="wb_request_registration_list" model="ir.ui.view">
+            <field name="name">wb.request.registration.list</field>
+            <field name="model">wb.request.registration</field>
+            <field name="arch" type="xml">
+                <tree default_order="id desc">
+                    <field name="id"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wb_request_registration_form" model="ir.ui.view">
+            <field name="name">wb.request.registration.form</field>
+            <field name="model">wb.request.registration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="sale_id" readonly="1"/>
+                            </group>
+                        </group>
+                        <group string="Request">
+                            <field name="request" nolabel="1" readonly="1"/>
+                        </group>
+                        <group string="Response">
+                            <field name="response" nolabel="1" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="process_message" readonly="1"/>
+                            <field name="active" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wb_request_registration" model="ir.actions.act_window">
+            <field name="name">Request Registration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wb.request.registration</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+         <menuitem
+            id="menuitem_wb_request_registration"
+            name="Request Registration"
+            action="action_wb_request_registration"
+            parent="base.menu_users"
+            sequence="99"/>
+
+    </data>
+</odoo>
+
+
