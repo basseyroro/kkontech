@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.cron" id="ebilling_cron">
+            <field name="name">EBilling: Auto Post In ERP</field>
+            <field name="model_id" ref="model_wb_request_registration"/>
+            <field name="state">code</field>
+            <field name="code">model.autoPostPendingEntries()</field>
+            <field name="interval_number">4</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+    </data>
+</odoo>
