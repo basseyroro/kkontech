@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wb_request_registration_root,wb.request.registration,model_wb_request_registration,base.group_system,1,1,1,1
+access_wb_request_registrationpublic_root,wb.request.registration,model_wb_request_registration,base.group_public,1,1,1,0
+access_product_public_root,wb.request.registration,product.model_product_product,base.group_public,1,0,0,0
+access_tax_public_root,wb.request.registration,account.model_account_tax,base.group_public,1,0,0,0
+access_uom_public_root,wb.request.registration,uom.model_uom_uom,base.group_public,1,0,0,0
+access_product_template_public_root,wb.request.registration,product.model_product_template,base.group_public,1,0,0,0
